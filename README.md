@@ -6,4 +6,4 @@
 - *requirements* are suggestions for installing the required modules
 
 
-![Example of typhoon data sequence. Contains a series of 512x512 images](imaging/infrared_animation_2025-05-10_23-12-02.gif)
+![Example of typhoon data sequence. Contains a series of 512x512 images](Imaging/infrared_animation_2025-05-10_23-12-02.gif)
