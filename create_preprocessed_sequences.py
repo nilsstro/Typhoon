@@ -3,7 +3,6 @@ import torch
 import torch.nn as nn
 import torchvision.transforms as T
 from torchvision.models import resnet34
-
 from preprocessing import preprocess_images_sequences
 
 
@@ -23,11 +22,10 @@ def main():
     ])
 
     def transform_func(img):
-        # APPLIED TO ALL IMAGES IN THE SEQUENCE AT ONCE
+        # Applies to all images at the same time
         img_range = [150, 350]
         img = (img - img_range[0])/(img_range[1]-img_range[0])
         img = img.astype(np.float32)
-        # img = torch.from_numpy(img).to("cuda").unsqueeze(0)
         img = transforms(img)
         return img
 
@@ -35,9 +33,8 @@ def main():
     model = resnet34(pretrained=True)  # Use a standard model 
     model.fc = nn.Identity()  # Remove final classification layer
     model.eval()
-    model.cpu()  # Or .to("cuda:1") if needed
+    model.cpu()  # Or .to("cuda:1") if available with local computer
 
-    print("⚠️ Using untrained ResNet-34 — features will be random!")
     print(f"Encoder ready, model with {sum(p.numel() for p in model.parameters()):,} parameters")
 
     dataset_path =  r'F:\Data folder for ML\AU\AU'
